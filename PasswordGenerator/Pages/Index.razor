@@ -1,39 +1,41 @@
 ﻿@page "/"
 
+@inject IJSRuntime JSRuntime
+
 <PageTitle>Password Generator</PageTitle>
 
 <h1>Password Generator</h1>
 
 <div class="row">
     <div class="col-md-6">
-        
+
         <div class="form-group">
             <label for="numberInput">Select a Number
-                <input type="number" @bind="selectedNumber"/>
+                <input type="number" @bind="passwordLength" />
             </label>
         </div>
 
         <div class="form-group">
             <label for="uppercase">Use Uppercase Letters
-                <input type="checkbox" @bind="useUppercase"/>
+                <input type="checkbox" @bind="useUppercase" />
             </label>
         </div>
 
         <div class="form-group">
             <label for="lowercase">Use lowercase Letters
-                <input type="checkbox" @bind="useLowercase"/>
+                <input type="checkbox" @bind="useLowercase" />
             </label>
         </div>
 
         <div class="form-group">
             <label for="symbols">Use symbols
-                <input type="checkbox" @bind="useSymbols"/>
+                <input type="checkbox" @bind="useSymbols" />
             </label>
         </div>
 
         <div class="form-group">
             <label for="numbers">Use Numbers
-                <input type="checkbox" @bind="useNumbers"/>
+                <input type="checkbox" @bind="useNumbers" />
             </label>
         </div>
 
@@ -41,23 +43,33 @@
             <button class="btn btn-primary" @onclick="CreatePassword">Create Password</button>
         </div>
 
+        <div class="form-group">
+            <label for="generatedPassword">Generated Password
+                <input type="text" id="generatedPassword" value="@generatedPassword" readonly />
+            </label>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-secondary" @onclick="CopyToClipboard">Copy Password</button>
+        </div>
+
     </div>
 </div>
-
 
 @code {
     private List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
     private List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
     private List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
     private List<char> symbols = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
-    
-    private int selectedNumber = 10;
+
+    private int passwordLength = 10;
     private bool useUppercase = true;
     private bool useLowercase = true;
     private bool useSymbols = true;
     private bool useNumbers = true;
 
-    
+    private string generatedPassword = string.Empty;
+
     private void CreatePassword()
     {
         var random = new Random();
@@ -77,7 +89,7 @@
         {
             passwordChars.AddRange(symbols);
         }
-        
+
         if (useNumbers)
         {
             passwordChars.AddRange(numbers);
@@ -89,13 +101,18 @@
             return;
         }
 
-        var password = new char[selectedNumber];
-        for (int i = 0; i < selectedNumber; i++)
+        var password = new char[passwordLength];
+        for (int i = 0; i < passwordLength; i++)
         {
             password[i] = passwordChars[random.Next(passwordChars.Count)];
         }
 
-        Console.WriteLine(new string(password));
+        generatedPassword = new string(password);
     }
-    
+
+    // Call JS to copy to clipboard
+    private async Task CopyToClipboard()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", generatedPassword);
+    }
 }
