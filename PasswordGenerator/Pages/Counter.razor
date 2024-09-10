@@ -1,0 +1,101 @@
+﻿@page "/"
+
+<PageTitle>Password Generator</PageTitle>
+
+<h1>Password Generator</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        
+        <div class="form-group">
+            <label for="numberInput">Select a Number
+                <input type="number" @bind="selectedNumber"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="uppercase">Use Uppercase Letters
+                <input type="checkbox" @bind="useUppercase"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="lowercase">Use lowercase Letters
+                <input type="checkbox" @bind="useLowercase"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="symbols">Use symbols
+                <input type="checkbox" @bind="useSymbols"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="numbers">Use Numbers
+                <input type="checkbox" @bind="useNumbers"/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" @onclick="CreatePassword">Create Password</button>
+        </div>
+
+    </div>
+</div>
+
+
+@code {
+    private List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
+    private List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
+    private List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
+    private List<char> symbols = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
+    
+    private int selectedNumber = 10;
+    private bool useUppercase = true;
+    private bool useLowercase = true;
+    private bool useSymbols = true;
+    private bool useNumbers = true;
+
+    
+    private void CreatePassword()
+    {
+        var random = new Random();
+        var passwordChars = new List<char>();
+
+        if (useUppercase)
+        {
+            passwordChars.AddRange(uppercaseAlphabet);
+        }
+
+        if (useLowercase)
+        {
+            passwordChars.AddRange(lowercaseAlphabet);
+        }
+
+        if (useSymbols)
+        {
+            passwordChars.AddRange(symbols);
+        }
+        
+        if (useNumbers)
+        {
+            passwordChars.AddRange(numbers);
+        }
+
+        if (passwordChars.Count == 0)
+        {
+            Console.WriteLine("No character sets selected.");
+            return;
+        }
+
+        var password = new char[selectedNumber];
+        for (int i = 0; i < selectedNumber; i++)
+        {
+            password[i] = passwordChars[random.Next(passwordChars.Count)];
+        }
+
+        Console.WriteLine(new string(password));
+    }
+    
+}
