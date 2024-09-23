@@ -1,0 +1,107 @@
+﻿/* Main container styling */
+.password-generator-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Styling for form controls */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Slider styling */
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Input box */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Primary button */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Secondary button */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #565e64;
+}
+
+/* Switch styles */
+.form-control-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    -webkit-appearance: none;
+    background-color: #c6c6c6;
+    outline: none;
+    border-radius: 25px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.form-control-switch:checked {
+    background-color: #4caf50;
+}
+
+.form-control-switch:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 19px;
+    height: 19px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.form-control-switch:checked:before {
+    transform: translateX(25px);
+}
+
+/* Align labels next to switches */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
