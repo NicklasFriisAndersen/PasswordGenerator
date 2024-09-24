@@ -10,28 +10,31 @@
     <!-- Slider and input for password length -->
     <div class="form-group">
         <label for="passwordLengthSlider">Characters: </label>
-        <input type="number" min="4" max="100" @bind="passwordLength" class="input-number" />
         <input type="range" id="passwordLengthSlider" min="4" max="100" @bind="passwordLength" class="slider" />
+        <input type="number" min="4" max="100" @bind="passwordLength" class="input-number" />
     </div>
 
-    <div class="switch-wrapper">
-        <input type="checkbox" @bind="useUppercase" class="form-control-switch" />
-        <label>Uppercase Letters</label>
-    </div>
+    <!-- Checkboxes for password options -->
+    <div class="form-group horizontal-switches">
+        <div class="switch-container">
+            <label>Uppercase</label>
+            <input type="checkbox" @bind="useUppercase" class="form-control-switch" />
+        </div>
 
-    <div class="switch-wrapper">
-        <input type="checkbox" @bind="useLowercase" class="form-control-switch" />
-        <label>Lowercase Letters</label>
-    </div>
+        <div class="switch-container">
+            <label>Lowercase</label>
+            <input type="checkbox" @bind="useLowercase" class="form-control-switch" />
+        </div>
 
-    <div class="switch-wrapper">
-        <input type="checkbox" @bind="useNumbers" class="form-control-switch" />
-        <label>Numbers</label>
-    </div>
+        <div class="switch-container">
+            <label>Numbers</label>
+            <input type="checkbox" @bind="useNumbers" class="form-control-switch" />
+        </div>
 
-    <div class="switch-wrapper">
-        <input type="checkbox" @bind="useSymbols" class="form-control-switch" />
-        <label>Symbols</label>
+        <div class="switch-container">
+            <label>Symbols</label>
+            <input type="checkbox" @bind="useSymbols" class="form-control-switch" />
+        </div>
     </div>
 
 

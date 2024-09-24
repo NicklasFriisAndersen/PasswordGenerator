@@ -4,14 +4,20 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 700px;
     margin: 50px auto;
     text-align: center;
 }
 
 /* Styling for form controls */
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* lidt afstand mellem rækkerne */
+}
+
+.form-group label {
+    margin-left: 10px;
 }
 
 /* Slider styling */
@@ -60,17 +66,18 @@ input[type="text"] {
     background-color: #565e64;
 }
 
-/* Switch styles */
+/* Custom switch styling */
 .form-control-switch {
     position: relative;
-    width: 50px;
-    height: 25px;
+    width: 40px; /* Ændret bredde */
+    height: 20px; /* Ændret højde */
     -webkit-appearance: none;
     background-color: #c6c6c6;
     outline: none;
-    border-radius: 25px;
+    border-radius: 20px; /* Justeret til højden */
     transition: background-color 0.2s;
     cursor: pointer;
+    margin-left: 10px; /* Lidt afstand mellem tekst og switch */
 }
 
 .form-control-switch:checked {
@@ -80,28 +87,38 @@ input[type="text"] {
 .form-control-switch:before {
     content: '';
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 19px;
-    height: 19px;
+    top: 2px; /* Justeret position */
+    left: 2px; /* Justeret position */
+    width: 16px; /* Ændret bredde på knappen */
+    height: 16px; /* Ændret højde på knappen */
     background-color: white;
     border-radius: 50%;
     transition: transform 0.2s;
 }
 
 .form-control-switch:checked:before {
-    transform: translateX(25px);
+    transform: translateX(20px); /* Justeret til den nye bredde */
 }
 
-/* Align labels next to switches */
-.form-group {
+/* Gør form-group til en horisontal linje */
+.horizontal-switches {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Giver afstand mellem hver switch/label */
+    margin-bottom: 20px;
+}
+
+/* Container for hver switch og dens label */
+.switch-container {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-right: 10px;
 }
 
-.form-group label {
-    margin-left: 10px;
-    font-size: 16px;
-    font-weight: 500;
+/* Sørg for, at label og switch er justeret korrekt */
+.switch-container label {
+    margin-right: 0;
+    text-align: left;
 }
