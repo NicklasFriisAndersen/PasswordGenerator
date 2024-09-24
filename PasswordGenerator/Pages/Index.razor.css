@@ -1,4 +1,9 @@
-﻿/* Main container styling */
+﻿/* Global font styling */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main container styling */
 .password-generator-box {
     background-color: #ffffff;
     padding: 20px;
@@ -7,17 +12,20 @@
     width: 700px;
     margin: 50px auto;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Styling for form controls */
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* lidt afstand mellem rækkerne */
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-group label {
     margin-left: 10px;
+    font-size: 14px; /* Mindre tekststørrelse for labels */
 }
 
 /* Slider styling */
@@ -33,7 +41,15 @@ input[type="text"] {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 16px; /* Hold standardstørrelsen for inputbokse */
+}
+
+/* Divider styling */
+.hr-divider {
+    border: none;
+    border-top: 1px solid #909090; /* Lys grå linje */
+    margin: 20px 0; /* Lidt afstand til de andre elementer */
+    width: 100%; /* Fylder hele bredden */
 }
 
 /* Button styling */
@@ -44,6 +60,7 @@ input[type="text"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Primary button */
@@ -77,7 +94,7 @@ input[type="text"] {
     border-radius: 20px; /* Justeret til højden */
     transition: background-color 0.2s;
     cursor: pointer;
-    margin-left: 10px; /* Lidt afstand mellem tekst og switch */
+    margin-left: 10px;
 }
 
 .form-control-switch:checked {
@@ -87,17 +104,17 @@ input[type="text"] {
 .form-control-switch:before {
     content: '';
     position: absolute;
-    top: 2px; /* Justeret position */
-    left: 2px; /* Justeret position */
-    width: 16px; /* Ændret bredde på knappen */
-    height: 16px; /* Ændret højde på knappen */
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
     background-color: white;
     border-radius: 50%;
     transition: transform 0.2s;
 }
 
 .form-control-switch:checked:before {
-    transform: translateX(20px); /* Justeret til den nye bredde */
+    transform: translateX(20px);
 }
 
 /* Gør form-group til en horisontal linje */
@@ -106,7 +123,7 @@ input[type="text"] {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 20px; /* Giver afstand mellem hver switch/label */
+    gap: 20px;
     margin-bottom: 20px;
 }
 
@@ -121,4 +138,10 @@ input[type="text"] {
 .switch-container label {
     margin-right: 0;
     text-align: left;
+    font-size: 14px; /* Mindre tekst for labels */
+}
+
+/* Styling for generated password label (holder standardstørrelse) */
+.generated-password-label {
+    font-size: 16px; /* Standardstørrelse for den genererede password tekst */
 }

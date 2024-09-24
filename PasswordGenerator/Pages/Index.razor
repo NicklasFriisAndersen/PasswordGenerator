@@ -8,6 +8,7 @@
     <h2>Password Generator</h2>
 
     <!-- Slider and input for password length -->
+    <hr class="hr-divider">
     <div class="form-group">
         <label for="passwordLengthSlider">Characters: </label>
         <input type="range" id="passwordLengthSlider" min="4" max="100" @bind="passwordLength" class="slider" />
@@ -15,6 +16,7 @@
     </div>
 
     <!-- Checkboxes for password options -->
+    <hr class="hr-divider">
     <div class="form-group horizontal-switches">
         <div class="switch-container">
             <label>Uppercase</label>
@@ -36,20 +38,21 @@
             <input type="checkbox" @bind="useSymbols" class="form-control-switch" />
         </div>
     </div>
-
-
-
+    
+    <!-- Generated password -->
+    <hr class="hr-divider">
     <div class="form-group">
-        <button class="btn btn-primary" @onclick="CreatePassword">Refresh password</button>
-    </div>
-
-    <div class="form-group generated-password-box">
         <label for="generatedPassword">Generated password</label>
+    </div>
+    <div class="form-group generated-password-box">
         <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password" />
     </div>
 
     <div class="form-group">
-        <button class="btn btn-secondary" @onclick="CopyToClipboard">Copy password</button>
+        <button class="btn btn-primary" @onclick="CopyToClipboard">Copy password</button>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-secondary" @onclick="CreatePassword">Refresh password</button>
     </div>
 </div>
 
