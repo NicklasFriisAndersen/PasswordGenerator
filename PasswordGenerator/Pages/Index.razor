@@ -5,7 +5,7 @@
 <PageTitle>Password Generator</PageTitle>
 
 <div class="container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290.626 290.626" xml:space="preserve" width="100" height="100">
+    <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290.626 290.626" xml:space="preserve" width="100" height="100">
         <path style="fill:#fc6d43" d="M234.375 150h-15l-3.75 9.375h-4.688l-3.75-9.375H191.25l-3.75 9.375h-4.688l-3.75-9.375h-15.938l-3.75 9.375h-4.687l-3.75-9.375H126.81c-6.909-13.88-21.197-23.438-37.748-23.438-23.302 0-42.187 18.886-42.187 42.188s18.886 42.188 42.187 42.188c16.556 0 30.844-9.558 37.748-23.438h107.564l14.063-18.75z"/>
         <path style="fill:#c2d6f1" d="M290.625 56.25c0-31.017-25.233-56.25-56.25-56.25H56.25C25.233 0 0 25.233 0 56.25c0 18.816 9.319 35.461 23.55 45.68-.038.398-.112.797-.112 1.195V243.75c0 7.753 6.309 14.063 14.062 14.063h46.875v23.438H60.938v9.375h168.749v-9.375H206.25v-23.438h46.875c7.753 0 14.063-6.309 14.063-14.063V103.125c0-.398-.075-.797-.113-1.195 14.231-10.219 23.55-26.864 23.55-45.68m-93.75 225H93.75v-23.438h103.125zm56.25-32.812H37.5a4.693 4.693 0 0 1-4.688-4.688v-9.375h225v9.375a4.69 4.69 0 0 1-4.687 4.688M257.813 225h-225V107.32c7.144 3.291 15.066 5.18 23.437 5.18h178.125c8.372 0 16.294-1.889 23.438-5.18zm-23.438-121.875H56.25c-25.847 0-46.875-21.028-46.875-46.875S30.403 9.375 56.25 9.375h178.125c25.847 0 46.875 21.028 46.875 46.875s-21.028 46.875-46.875 46.875"/>
         <path style="fill:#2e2f2b" d="M103.125 42.188c0-15.511-12.614-28.125-28.125-28.125S46.875 26.677 46.875 42.188v4.688h-4.687v51.563h65.625V46.875h-4.688zm-46.875 0c0-10.341 8.409-18.75 18.75-18.75s18.75 8.409 18.75 18.75v4.688h-37.5zm42.188 46.875H51.563V56.25h46.875z"/>
@@ -66,10 +66,8 @@
         <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password"/>
     </div>
 
-    <div class="form-group">
+    <div class="form-group button-group">
         <button class="btn btn-primary" @onclick="CopyToClipboard">Copy password</button>
-    </div>
-    <div class="form-group">
         <button class="btn btn-secondary" @onclick="CreatePassword">Refresh password</button>
     </div>
 </div>
@@ -78,6 +76,9 @@
 
 <div class="footer">
     <p>&copy; 2023 Your Company. All rights reserved.</p>
+    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 0v200M0 100h200M29.29 29.29l141.42 141.42m0-141.42L29.29 170.71M7.61 61.73l184.78 76.54M61.73 192.39 138.27 7.61m-76.54 0 76.54 184.78m54.12-130.66L7.61 138.27" stroke="#f4ece1" stroke-width="7"/>
+    </svg>
 </div>
 
 @code {

@@ -51,14 +51,14 @@ input[type="range"]::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #007bff;
+    background: var(--blue);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 /* Når thumb er aktiv */
 input[type="range"]:active::-webkit-slider-thumb {
-    background: #0056b3;
+    background: #90a1b8;
     transform: scale(1.1);
 }
 
@@ -94,13 +94,13 @@ input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #007bff;
+    background: var(--blue);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 input[type="range"]:active::-moz-range-thumb {
-    background: #0056b3;
+    background: #90a1b8;
     transform: scale(1.1);
 }
 
@@ -157,9 +157,14 @@ input[type="text"] {
     font-family: 'Poppins', sans-serif;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+}
+
 /* Primary button */
 .btn-primary {
-    background-color: #007bff;
+    background-color: var(--blue);
     color: white;
 }
 
@@ -169,8 +174,9 @@ input[type="text"] {
 
 /* Secondary button */
 .btn-secondary {
-    background-color: #6c757d;
-    color: white;
+    background-color: white;
+    color: var(--blue);
+    border: 2px solid var(--blue); /* Add an outline */
 }
 
 .btn-secondary:hover {
@@ -232,6 +238,16 @@ input[type="text"] {
     font-size: 14px; /* Mindre tekst for labels */
 }
 
+.generated-password {
+    text-align: center; /* Center the text */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* Keep the standard size for input boxes */
+}
+
 /* Styling for generated password label (holder standardstørrelse) */
 .generated-password-label {
     font-size: 16px; /* Standardstørrelse for den genererede password tekst */
@@ -257,7 +273,7 @@ input[type="text"] {
     gap: 20px; /* Space between the SVG and the box */
 }
 
-svg {
+.logo-svg {
     margin-top: 80px;
     width: 400px; /* Adjust the width as needed */
     height: 400px; /* Adjust the height as needed */
