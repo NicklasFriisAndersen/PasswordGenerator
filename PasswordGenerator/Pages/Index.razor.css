@@ -37,7 +37,7 @@ input[type="range"] {
     outline: none;
     margin: 10px 0;
     transition: background 0.3s;
-    
+
 }
 
 /* Når slideren bliver brugt */
@@ -58,7 +58,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Når thumb er aktiv */
 input[type="range"]:active::-webkit-slider-thumb {
-    background: #90a1b8;
+    background: #aabcd8;
     transform: scale(1.1);
 }
 
@@ -166,10 +166,11 @@ input[type="text"] {
 .btn-primary {
     background-color: var(--blue);
     color: white;
+    border: 2px solid var(--blue); /* Add an outline */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #aabcd8;
 }
 
 /* Secondary button */
@@ -180,7 +181,6 @@ input[type="text"] {
 }
 
 .btn-secondary:hover {
-    background-color: #565e64;
 }
 
 /* Custom switch styling */
@@ -197,7 +197,7 @@ input[type="text"] {
 }
 
 .form-control-switch:checked {
-    background-color: #4caf50;
+    background-color: var(--orange);
 }
 
 .form-control-switch:before {

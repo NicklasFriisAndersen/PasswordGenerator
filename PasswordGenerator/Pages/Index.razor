@@ -14,63 +14,63 @@
         <path style="fill:#2e2f2b" d="M70.313 154.688c-7.753 0-14.062 6.309-14.062 14.063s6.309 14.063 14.062 14.063 14.062-6.309 14.062-14.063-6.309-14.063-14.062-14.063m0 18.75c-2.588 0-4.688-2.105-4.688-4.688s2.1-4.688 4.688-4.688S75 166.167 75 168.75s-2.1 4.688-4.687 4.688"/>
     </svg>
 
-<div class="password-generator-box">
-    <div class="form-group">
-        <b>
-            <label for="headline">Customize your new password</label>
-        </b>
-    </div>
-
-    <!-- Slider and input for password length -->
-    <hr class="hr-divider">
-    <div class="form-group slider-group">
-        <label for="passwordLengthSlider">Characters</label>
-        <div class="slider-and-input">
-            <input type="range" id="slider" min="8" max="100" @bind="passwordLength" class="slider"/>
-            <input type="number" min="8" max="100" @bind="passwordLength" class="input-number"/>
-        </div>
-    </div>
-
-    <!-- Checkboxes for password options -->
-    <hr class="hr-divider">
-    <div class="form-group horizontal-switches">
-        <div class="switch-container">
-            <label>Uppercase</label>
-            <input type="checkbox" @bind="useUppercase" class="form-control-switch"/>
+    <div class="password-generator-box">
+        <div class="form-group">
+            <b>
+                <label for="headline">Customize your new password</label>
+            </b>
         </div>
 
-        <div class="switch-container">
-            <label>Lowercase</label>
-            <input type="checkbox" @bind="useLowercase" class="form-control-switch"/>
+        <!-- Slider and input for password length -->
+        <hr class="hr-divider">
+        <div class="form-group slider-group">
+            <label for="passwordLengthSlider">Characters</label>
+            <div class="slider-and-input">
+                <input type="range" id="slider" min="8" max="100" @bind="passwordLength" class="slider"/>
+                <input type="number" min="8" max="100" @bind="passwordLength" class="input-number"/>
+            </div>
         </div>
 
-        <div class="switch-container">
-            <label>Numbers</label>
-            <input type="checkbox" @bind="useNumbers" class="form-control-switch"/>
+        <!-- Checkboxes for password options -->
+        <hr class="hr-divider">
+        <div class="form-group horizontal-switches">
+            <div class="switch-container">
+                <label>Uppercase</label>
+                <input type="checkbox" @bind="useUppercase" class="form-control-switch"/>
+            </div>
+
+            <div class="switch-container">
+                <label>Lowercase</label>
+                <input type="checkbox" @bind="useLowercase" class="form-control-switch"/>
+            </div>
+
+            <div class="switch-container">
+                <label>Numbers</label>
+                <input type="checkbox" @bind="useNumbers" class="form-control-switch"/>
+            </div>
+
+            <div class="switch-container">
+                <label>Symbols</label>
+                <input type="checkbox" @bind="useSymbols" class="form-control-switch"/>
+            </div>
         </div>
 
-        <div class="switch-container">
-            <label>Symbols</label>
-            <input type="checkbox" @bind="useSymbols" class="form-control-switch"/>
+        <!-- Generated password -->
+        <hr class="hr-divider">
+        <div class="form-group">
+            <b>
+                <label for="generatedPassword">Generated password</label>
+            </b>
+        </div>
+        <div class="form-group generated-password-box">
+            <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password"/>
+        </div>
+
+        <div class="form-group button-group">
+            <button class="btn btn-primary" @onclick="CopyToClipboard">Copy password</button>
+            <button class="btn btn-secondary" @onclick="CreatePassword">Refresh password</button>
         </div>
     </div>
-
-    <!-- Generated password -->
-    <hr class="hr-divider">
-    <div class="form-group">
-        <b>
-            <label for="generatedPassword">Generated password</label>
-        </b>
-    </div>
-    <div class="form-group generated-password-box">
-        <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password"/>
-    </div>
-
-    <div class="form-group button-group">
-        <button class="btn btn-primary" @onclick="CopyToClipboard">Copy password</button>
-        <button class="btn btn-secondary" @onclick="CreatePassword">Refresh password</button>
-    </div>
-</div>
 
 </div>
 
@@ -82,10 +82,10 @@
 </div>
 
 @code {
-    private List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
-    private List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
-    private List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
-    private List<char> symbols = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
+    private readonly List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
+    private readonly List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
+    private readonly List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
+    private readonly List<char> symbols = new() { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
 
     private int passwordLength = 10;
     private bool useUppercase = true;
@@ -108,7 +108,7 @@
         if (passwordChars.Count == 0) return;
 
         var password = new char[passwordLength];
-        for (int i = 0; i < passwordLength; i++)
+        for (var i = 0; i < passwordLength; i++)
         {
             password[i] = passwordChars[random.Next(passwordChars.Count)];
         }
