@@ -1,6 +1,13 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+:root {
+    --beige: #f4ece1;
+    --blue: #c2d6f1;
+    --black: #2e2f2b;
+    --orange: #fc6d43;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

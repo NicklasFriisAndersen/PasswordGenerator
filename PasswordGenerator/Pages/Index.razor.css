@@ -1,5 +1,4 @@
-﻿/* Global font styling */
-body {
+﻿body {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -9,7 +8,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 700px;
+    width: 580px;
     margin: 50px auto;
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -24,15 +23,110 @@ body {
 }
 
 .form-group label {
-    margin-left: 10px;
+    margin-left: 5px;
     font-size: 14px; /* Mindre tekststørrelse for labels */
 }
 
 /* Slider styling */
 input[type="range"] {
-    width: 100%;
+    -webkit-appearance: none; /* Fjern standardstil */
+    width: 200px;
+    height: 8px; /* Gør track højere */
+    background: #e0e0e0; /* Lys grå farve på track */
+    border-radius: 5px; /* Runde hjørner på track */
+    outline: none;
     margin: 10px 0;
+    transition: background 0.3s;
 }
+
+/* Når slideren bliver brugt */
+input[type="range"]:hover {
+    background: #d3d3d3; /* Ændrer track farven, når du hover */
+}
+
+/* Style på thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Fjern standardstil */
+    appearance: none;
+    width: 20px; /* Gør thumb bredere */
+    height: 20px; /* Gør thumb højere */
+    border-radius: 50%; /* Gør thumb rund */
+    background: #007bff; /* Blå farve på thumb */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Når thumb er aktiv */
+input[type="range"]:active::-webkit-slider-thumb {
+    background: #0056b3; /* Mørkere blå farve, når du klikker */
+    transform: scale(1.1); /* Gør thumb lidt større, når du klikker */
+}
+
+/* Style for the slider and number input group */
+.slider-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Container for slider and input to align them properly */
+.slider-and-input {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px; /* Spacing between slider and input */
+    width: 60%;
+}
+
+.slider {
+    width: 80%; /* Slider takes most of the space */
+}
+
+.input-number {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* For Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Fjerner pilene fra number input i Chrome, Safari og Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Fjerner pilene fra number input i Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Tilpasser number input til at matche tekst input styling */
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box; /* Sørg for at padding og border tages i betragtning */
+}
+
 
 /* Input box */
 input[type="text"] {
@@ -86,15 +180,14 @@ input[type="text"] {
 /* Custom switch styling */
 .form-control-switch {
     position: relative;
-    width: 40px; /* Ændret bredde */
-    height: 20px; /* Ændret højde */
+    width: 35px; /* Mindre bredde */
+    height: 18px; /* Mindre højde */
     -webkit-appearance: none;
     background-color: #c6c6c6;
     outline: none;
-    border-radius: 20px; /* Justeret til højden */
+    border-radius: 18px; /* Justeret til mindre højde */
     transition: background-color 0.2s;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 .form-control-switch:checked {
@@ -106,24 +199,22 @@ input[type="text"] {
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 16px;
-    height: 16px;
+    width: 14px; /* Mindre bredde på knappen */
+    height: 14px; /* Mindre højde på knappen */
     background-color: white;
     border-radius: 50%;
     transition: transform 0.2s;
 }
 
 .form-control-switch:checked:before {
-    transform: translateX(20px);
+    transform: translateX(17px); /* Justeret til den nye bredde */
 }
 
-/* Gør form-group til en horisontal linje */
+/* Gør switches til at wrappe rundt */
 .horizontal-switches {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+    flex-wrap: wrap; /* Tillader wrapping */
+    gap: 15px; /* Afstand mellem hver switch/label */
     margin-bottom: 20px;
 }
 
@@ -136,7 +227,7 @@ input[type="text"] {
 
 /* Sørg for, at label og switch er justeret korrekt */
 .switch-container label {
-    margin-right: 0;
+    margin-right: 5px;
     text-align: left;
     font-size: 14px; /* Mindre tekst for labels */
 }

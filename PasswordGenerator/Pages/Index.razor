@@ -11,10 +11,12 @@
 
     <!-- Slider and input for password length -->
     <hr class="hr-divider">
-    <div class="form-group">
+    <div class="form-group slider-group">
         <label for="passwordLengthSlider">Characters: </label>
-        <input type="range" id="passwordLengthSlider" min="4" max="100" @bind="passwordLength" class="slider" />
-        <input type="number" min="4" max="100" @bind="passwordLength" class="input-number" />
+        <div class="slider-and-input">
+            <input type="range" id="slider" min="8" max="100" @bind="passwordLength" class="slider" />
+            <input type="number" min="8" max="100" @bind="passwordLength" class="input-number" />
+        </div>
     </div>
 
     <!-- Checkboxes for password options -->
