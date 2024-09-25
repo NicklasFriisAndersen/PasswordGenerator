@@ -31,12 +31,13 @@
 input[type="range"] {
     -webkit-appearance: none; /* Fjern standardstil */
     width: 200px;
-    height: 8px; /* Gør track højere */
+    height: 4px; /* Gør track højere */
     background: #e0e0e0; /* Lys grå farve på track */
     border-radius: 5px; /* Runde hjørner på track */
     outline: none;
     margin: 10px 0;
     transition: background 0.3s;
+    
 }
 
 /* Når slideren bliver brugt */
