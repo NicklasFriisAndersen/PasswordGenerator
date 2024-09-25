@@ -6,7 +6,9 @@
 
 <div class="password-generator-box">
     <div class="form-group">
-        <b><label for="headline">Customize your new password</label></b>
+        <b>
+            <label for="headline">Customize your new password</label>
+        </b>
     </div>
 
     <!-- Slider and input for password length -->
@@ -14,8 +16,8 @@
     <div class="form-group slider-group">
         <label for="passwordLengthSlider">Characters</label>
         <div class="slider-and-input">
-            <input type="range" id="slider" min="8" max="100" @bind="passwordLength" class="slider" />
-            <input type="number" min="8" max="100" @bind="passwordLength" class="input-number" />
+            <input type="range" id="slider" min="8" max="100" @bind="passwordLength" class="slider"/>
+            <input type="number" min="8" max="100" @bind="passwordLength" class="input-number"/>
         </div>
     </div>
 
@@ -24,32 +26,34 @@
     <div class="form-group horizontal-switches">
         <div class="switch-container">
             <label>Uppercase</label>
-            <input type="checkbox" @bind="useUppercase" class="form-control-switch" />
+            <input type="checkbox" @bind="useUppercase" class="form-control-switch"/>
         </div>
 
         <div class="switch-container">
             <label>Lowercase</label>
-            <input type="checkbox" @bind="useLowercase" class="form-control-switch" />
+            <input type="checkbox" @bind="useLowercase" class="form-control-switch"/>
         </div>
 
         <div class="switch-container">
             <label>Numbers</label>
-            <input type="checkbox" @bind="useNumbers" class="form-control-switch" />
+            <input type="checkbox" @bind="useNumbers" class="form-control-switch"/>
         </div>
 
         <div class="switch-container">
             <label>Symbols</label>
-            <input type="checkbox" @bind="useSymbols" class="form-control-switch" />
+            <input type="checkbox" @bind="useSymbols" class="form-control-switch"/>
         </div>
     </div>
-    
+
     <!-- Generated password -->
     <hr class="hr-divider">
     <div class="form-group">
-        <b><label for="generatedPassword">Generated password</label></b>
+        <b>
+            <label for="generatedPassword">Generated password</label>
+        </b>
     </div>
     <div class="form-group generated-password-box">
-        <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password" />
+        <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password"/>
     </div>
 
     <div class="form-group">
@@ -60,43 +64,48 @@
     </div>
 </div>
 
+<div class="footer">
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+</div>
+
 @code {
-private List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
-private List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
-private List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
-private List<char> symbols = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
+    private List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
+    private List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
+    private List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
+    private List<char> symbols = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
 
-private int passwordLength = 10;
-private bool useUppercase = true;
-private bool useLowercase = true;
-private bool useSymbols = true;
-private bool useNumbers = true;
+    private int passwordLength = 10;
+    private bool useUppercase = true;
+    private bool useLowercase = true;
+    private bool useSymbols = true;
+    private bool useNumbers = true;
 
-private string generatedPassword = string.Empty;
+    private string generatedPassword = string.Empty;
 
-private void CreatePassword()
-{
-var random = new Random();
-var passwordChars = new List<char>();
+    private void CreatePassword()
+    {
+        var random = new Random();
+        var passwordChars = new List<char>();
 
-if (useUppercase) passwordChars.AddRange(uppercaseAlphabet);
-if (useLowercase) passwordChars.AddRange(lowercaseAlphabet);
-if (useSymbols) passwordChars.AddRange(symbols);
-if (useNumbers) passwordChars.AddRange(numbers);
+        if (useUppercase) passwordChars.AddRange(uppercaseAlphabet);
+        if (useLowercase) passwordChars.AddRange(lowercaseAlphabet);
+        if (useSymbols) passwordChars.AddRange(symbols);
+        if (useNumbers) passwordChars.AddRange(numbers);
 
-if (passwordChars.Count == 0) return;
+        if (passwordChars.Count == 0) return;
 
-var password = new char[passwordLength];
-for (int i = 0; i < passwordLength; i++)
-{
-password[i] = passwordChars[random.Next(passwordChars.Count)];
-}
+        var password = new char[passwordLength];
+        for (int i = 0; i < passwordLength; i++)
+        {
+            password[i] = passwordChars[random.Next(passwordChars.Count)];
+        }
 
-generatedPassword = new string(password);
-}
+        generatedPassword = new string(password);
+    }
 
-private async Task CopyToClipboard()
-{
-await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", generatedPassword);
-}
+    private async Task CopyToClipboard()
+    {
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", generatedPassword);
+    }
+
 }

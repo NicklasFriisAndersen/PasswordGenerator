@@ -29,11 +29,11 @@
 
 /* Slider styling */
 input[type="range"] {
-    -webkit-appearance: none; /* Fjern standardstil */
+    -webkit-appearance: none;
     width: 200px;
-    height: 4px; /* Gør track højere */
-    background: #e0e0e0; /* Lys grå farve på track */
-    border-radius: 5px; /* Runde hjørner på track */
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 5px;
     outline: none;
     margin: 10px 0;
     transition: background 0.3s;
@@ -47,20 +47,19 @@ input[type="range"]:hover {
 
 /* Style på thumb */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Fjern standardstil */
-    appearance: none;
-    width: 20px; /* Gør thumb bredere */
-    height: 20px; /* Gør thumb højere */
-    border-radius: 50%; /* Gør thumb rund */
-    background: #007bff; /* Blå farve på thumb */
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 /* Når thumb er aktiv */
 input[type="range"]:active::-webkit-slider-thumb {
-    background: #0056b3; /* Mørkere blå farve, når du klikker */
-    transform: scale(1.1); /* Gør thumb lidt større, når du klikker */
+    background: #0056b3;
+    transform: scale(1.1);
 }
 
 /* Style for the slider and number input group */
@@ -236,4 +235,16 @@ input[type="text"] {
 /* Styling for generated password label (holder standardstørrelse) */
 .generated-password-label {
     font-size: 16px; /* Standardstørrelse for den genererede password tekst */
+}
+
+.footer {
+    background-color: var(--blue);
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #6c757d;
 }
