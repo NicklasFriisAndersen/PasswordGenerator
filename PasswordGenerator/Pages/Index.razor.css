@@ -244,7 +244,21 @@ input[type="text"] {
     border-top: 1px solid #e7e7e7;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     font-size: 14px;
     color: #6c757d;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Space between the SVG and the box */
+}
+
+svg {
+    margin-top: 80px;
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
 }
