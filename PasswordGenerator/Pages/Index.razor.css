@@ -291,10 +291,25 @@ input[type="text"] {
     display: flex;
     align-items: flex-start; /* Align items to the top */
     gap: 20px; /* Space between the SVG and the box */
+    margin-top: 40px;
 }
 
 .logo-svg {
     margin-top: 70px;
     width: 370px; /* Adjust the width as needed */
     height: 370px; /* Adjust the height as needed */
+}
+
+.headline-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the SVG and the headline */
+}
+
+.headline {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--black);
+    margin-bottom: 20px;
 }
