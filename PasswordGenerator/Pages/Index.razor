@@ -94,6 +94,11 @@
     private bool useNumbers = true;
 
     private string generatedPassword = string.Empty;
+    
+    protected override void OnInitialized()
+    {
+        CreatePassword();
+    }
 
     private void CreatePassword()
     {
