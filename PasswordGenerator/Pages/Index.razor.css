@@ -2,6 +2,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body, p, label, b {
+    color: var(--black);
+}
+
+.slider-group label,
+.horizontal-switches label {
+    color: #808080; /* Slightly grey color */
+}
+
 /* Main container styling */
 .password-generator-box {
     background-color: #ffffff;
@@ -181,6 +190,8 @@ input[type="text"] {
 }
 
 .btn-secondary:hover {
+    border: 2px solid  #aabcd8; /* Add an outline */
+
 }
 
 /* Custom switch styling */
@@ -254,6 +265,7 @@ input[type="text"] {
 }
 
 .footer {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--blue);
     padding: 20px;
     text-align: center;
@@ -264,7 +276,15 @@ input[type="text"] {
     right: 0;
     width: 100%;
     font-size: 14px;
-    color: #6c757d;
+    color: #808080; /* Set text color */
+}
+
+.footer label{
+    color: #808080; /* Slightly grey color */
+}
+
+.footer svg {
+    fill: var(--black); /* Set SVG color */
 }
 
 .container {
@@ -274,7 +294,7 @@ input[type="text"] {
 }
 
 .logo-svg {
-    margin-top: 80px;
-    width: 400px; /* Adjust the width as needed */
-    height: 400px; /* Adjust the height as needed */
+    margin-top: 70px;
+    width: 370px; /* Adjust the width as needed */
+    height: 370px; /* Adjust the height as needed */
 }

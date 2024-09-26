@@ -75,43 +75,62 @@
 </div>
 
 <div class="footer">
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
-    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 0v200M0 100h200M29.29 29.29l141.42 141.42m0-141.42L29.29 170.71M7.61 61.73l184.78 76.54M61.73 192.39 138.27 7.61m-76.54 0 76.54 184.78m54.12-130.66L7.61 138.27" stroke="#f4ece1" stroke-width="7"/>
-    </svg>
+    <p>Created by Nicklas Friis Andersen</p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/nicklas-friis-andersen-bab1a0252/" target="_blank" rel="noopener noreferrer">
+            <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.381-1.119-2.5-2.5-2.5s-2.5 1.119-2.5 2.5v5.5h-3v-10h3v1.5c.878-1.314 2.337-2.5 4-2.5 2.481 0 4.5 2.019 4.5 4.5v6.5z"/>
+            </svg>
+        </a>
+        <a href="https://github.com/NicklasFriisAndersen" target="_blank" rel="noopener noreferrer">
+            <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.387.6.111.82-.261.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.304.76-1.604-2.665-.305-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.803 5.624-5.475 5.921.43.371.814 1.102.814 2.222 0 1.606-.014 2.898-.014 3.293 0 .319.218.694.825.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+    </div>
 </div>
 
 @code {
+    // Character sets for password generation
     private readonly List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
     private readonly List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
     private readonly List<char> lowercaseAlphabet = Enumerable.Range('a', 26).Select(x => (char)x).ToList();
     private readonly List<char> symbols = new() { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
 
+    // Password options
     private int passwordLength = 10;
     private bool useUppercase = true;
     private bool useLowercase = true;
     private bool useSymbols = true;
     private bool useNumbers = true;
 
+    // Generated password
     private string generatedPassword = string.Empty;
     
+    // Generate password on startup
     protected override void OnInitialized()
     {
         CreatePassword();
     }
 
+    // Method to create a new password based on selected options
     private void CreatePassword()
     {
         var random = new Random();
         var passwordChars = new List<char>();
 
+        // Add selected character sets to the pool
         if (useUppercase) passwordChars.AddRange(uppercaseAlphabet);
         if (useLowercase) passwordChars.AddRange(lowercaseAlphabet);
         if (useSymbols) passwordChars.AddRange(symbols);
         if (useNumbers) passwordChars.AddRange(numbers);
 
+        //Restrictions
         if (passwordChars.Count == 0) return;
+        if(passwordLength < 0) passwordLength = 10;
+        if(passwordLength > 100) passwordLength = 100;
 
+        // Generate the password
         var password = new char[passwordLength];
         for (var i = 0; i < passwordLength; i++)
         {
@@ -121,6 +140,7 @@
         generatedPassword = new string(password);
     }
 
+    // Method to copy the generated password to the clipboard
     private async Task CopyToClipboard()
     {
         await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", generatedPassword);
