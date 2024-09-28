@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using System.Text
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Password Generator</PageTitle>
@@ -65,6 +66,7 @@
             <input type="text" id="generatedPassword" value="@generatedPassword" readonly class="generated-password"/>
         </div>
 
+        <!-- Buttons -->
         <div class="form-group button-group">
             <button class="btn btn-primary" @onclick="CopyToClipboard">Copy password</button>
             <button class="btn btn-secondary" @onclick="CreatePassword">Refresh password</button>
@@ -73,6 +75,7 @@
 
 </div>
 
+<!-- Footer -->
 <div class="footer">
     <p>Created by Nicklas Friis Andersen</p>
     <div class="social-links">
@@ -91,6 +94,10 @@
 </div>
 
 @code {
+    // Password length restrictions
+    private const int MinPasswordLength = 8;
+    private const int MaxPasswordLength = 100;
+    
     // Character sets for password generation
     private readonly List<char> numbers = Enumerable.Range('0', 10).Select(x => (char)x).ToList();
     private readonly List<char> uppercaseAlphabet = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
@@ -98,7 +105,7 @@
     private readonly List<char> symbols = new() { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', '\"', ',', '.', '<', '>', '/', '?' };
 
     // Password options
-    private int passwordLength = 10;
+    private int passwordLength = 20;
     private bool useUppercase = true;
     private bool useLowercase = true;
     private bool useSymbols = true;
@@ -116,6 +123,11 @@
     // Method to create a new password based on selected options
     private void CreatePassword()
     {
+        // Check if password length is within restrictions
+        if (passwordLength < MinPasswordLength) passwordLength = MinPasswordLength;
+        if (passwordLength > MaxPasswordLength) passwordLength = MaxPasswordLength;
+        
+        // Create a new password
         var random = new Random();
         var passwordChars = new List<char>();
 
@@ -127,17 +139,15 @@
 
         //Restrictions
         if (passwordChars.Count == 0) return;
-        if(passwordLength < 0) passwordLength = 10;
-        if(passwordLength > 100) passwordLength = 100;
 
         // Generate the password
-        var password = new char[passwordLength];
+        var password = new StringBuilder(passwordLength);
         for (var i = 0; i < passwordLength; i++)
         {
-            password[i] = passwordChars[random.Next(passwordChars.Count)];
+            password.Append(passwordChars[random.Next(passwordChars.Count)]);
         }
 
-        generatedPassword = new string(password);
+        generatedPassword = password.ToString();
     }
 
     // Method to copy the generated password to the clipboard
@@ -145,5 +155,4 @@
     {
         await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", generatedPassword);
     }
-
 }
